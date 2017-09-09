@@ -3,30 +3,36 @@ import Adafruit_BBIO.GPIO as GPIO
 import time
 buttonP = "PAUSE"
 buttonM = "MODE"
-Ledp = "RED"
-Ledm = "GREEN"
+LEDp = "RED"
+LEDm = "GREEN"
 
 # set pins
-GPIO.setup(Ledp,    GPIO.OUT)
-GPIO.setup(Ledm,    GPIO.OUT)
+GPIO.setup(LEDp,    GPIO.OUT)
+GPIO.setup(LEDm,    GPIO.OUT)
 GPIO.setup(buttonP, GPIO.IN)
 GPIO.setup(buttonM, GPIO.IN)
 
 GPIO.output(LEDp, 1)
 GPIO.output(LEDm, 1)
 
+map = {buttonP: LEDp, buttonM: LEDm}
+
+def updateLED(channel):
+    print("channel =" + channel)
+    state = GPIO.input(channel)
+    GPIO.output(map[channel], state)
+    print(map[channel] + " Toggeled")
+
 print("Running...")
 
-GPIO.add.event_detect(buttonP, GPIO.BOTH)
-GPIO.add.event_detect(buttonM, GPIO.BOTH)
+GPIO.add.event_detect(buttonP, GPIO.BOTH, callback=updateLED)
+GPIO.add.event_detect(buttonM, GPIO.BOTH, callback=updateLED)
+try:
+    while True:
+        time.sleep(100)
 
-while True:
-    if GPIO.event_detected(buttonP):
-        state = GPIO.input(buttonP)
-        GPIO.output(LEDp, state)
-        print(LEDp + "Toggled")
+except KeyboardInterrupt:
+    print("Cleaning Up")
+    GPIO.cleanup()
+GPIO.cleanup()
 
-    if GPIO.event_detected(buttonM):
-        state = GPIO.input(buttonM)
-        GPIO.output(LEDm, state)
-        print(LEDm + "Toggled")
