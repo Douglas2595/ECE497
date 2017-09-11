@@ -38,7 +38,7 @@ GPIO.output(LED4, 1)
 #map buttons to LEDs
 map = {buttonL: LED1, buttonR: LED2, buttonU: LED3, buttonD: LED4}
 
-def updateLED(channel1):
+def updateLED(channel):
      print("channel = " + channel)
      state = GPIO.input(channel)
      GPIO.output(map[channel], state)
