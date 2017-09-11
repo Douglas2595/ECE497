@@ -25,8 +25,8 @@ def updateLED(channel):
 
 print("Running...")
 
-GPIO.add.event_detect(buttonP, GPIO.BOTH, callback=updateLED)
-GPIO.add.event_detect(buttonM, GPIO.BOTH, callback=updateLED)
+GPIO.add_event_detect(buttonP, GPIO.BOTH, callback=updateLED)
+GPIO.add_event_detect(buttonM, GPIO.BOTH, callback=updateLED)
 try:
     while True:
         time.sleep(100)
@@ -35,4 +35,3 @@ except KeyboardInterrupt:
     print("Cleaning Up")
     GPIO.cleanup()
 GPIO.cleanup()
-
