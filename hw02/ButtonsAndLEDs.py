@@ -12,8 +12,8 @@ buttonU = "GP0_6"
 #Are these pins available for use like this on GPS?
 LED1 = "GP1_3"
 LED2 = "GP1_4"
-LED3 = "GP1_5"
-LED4 = "GP1_6"
+LED3 = "GREEN"
+LED4 = "RED"
 
 #LED/output Setup
 GPIO.setup(LED1, GPIO.OUT)
