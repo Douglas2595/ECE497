@@ -9,7 +9,7 @@ buttonD = "GP0_5"
 buttonU = "GP0_6"
 
 
-#Are these pins available for use like this on GPS?
+
 LED1 = "GP1_3"
 LED2 = "GP1_4"
 LED3 = "GREEN"

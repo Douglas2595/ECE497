@@ -1,7 +1,21 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 import pygame, sys
 from pygame.locals import *
+import Adafruit_BBIO.GPIO as GPIO
+import time
+
+#button assignments
+buttonL = "GP0_3"
+buttonR = "GP0_4"
+buttonD = "GP0_5"
+buttonU = "GP0_6"
+
+#Button/input Setup
+GPIO.setup(buttonL, GPIO.IN)
+GPIO.setup(buttonR, GPIO.IN)
+GPIO.setup(buttonD, GPIO.IN)
+GPIO.setup(buttonU, GPIO.IN)
 
 pygame.init()
 
@@ -25,15 +39,22 @@ while 1:
         pygame.draw.line(screen, (0,0,0), (xgrid, ygrid+(i*100)+100), (xgrid+(size*100), ygrid+(i*100)+100))
         pygame.draw.line(screen, (0,0,0), (xgrid+100+(i*100), ygrid), (xgrid+100+(i*100), ygrid+(size*100)))
     pygame.display.update()
-    key = pygame.key.get_pressed()
-    if key[pygame.K_RIGHT]:
-        if x < ((size-1)*100): x+=100
-    if key[pygame.K_LEFT]:
-        if x > 50: x-=100
-    if key[pygame.K_UP]:
-        if y > 50: y-=100
-    if key[pygame.K_DOWN]:
-        if y < ((size-1)*100): y+=100
+
+    def update(channel):
+         if GPIO.input(buttonR):
+             if x < ((size-1)*100): x+=100
+         if GPIO.input(buttonL):
+             if x > 50: x-=100
+         if GPIO.input(buttonU):
+             if y > 50: y-=100
+         if GPIO.input(buttonU):
+             if y < ((size-1)*100): y+=100
+
+    GPIO.add_event_detect(buttonL, GPIO.FALLING, callback = update)
+    GPIO.add_event_detect(buttonR, GPIO.FALLING, callback = update)
+    GPIO.add_event_detect(buttonD, GPIO.FALLING, callback = update)
+    GPIO.add_event_detect(buttonU, GPIO.FALLING, callback = update)
+
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
