@@ -7,6 +7,10 @@ pygame.init()
 
 size = input('Game Size: ')
 
+print("Use keyboard arrow keys to move")
+print("Use spacebar to clear")
+print("Use Esc or x button on game window to close")
+
 screen = pygame.display.set_mode((size*100,size*100))
 
 x=10
