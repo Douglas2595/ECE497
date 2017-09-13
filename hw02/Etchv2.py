@@ -1,9 +1,9 @@
 #!/usr/bin/env python2
 
-import pygame, sys
-from pygame.locals import *
 import Adafruit_BBIO.GPIO as GPIO
 import time
+import pygame, sys
+from pygame.locals import *
 
 #button assignments
 buttonL = "GP0_3"
