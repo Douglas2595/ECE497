@@ -17,6 +17,7 @@ GPIO.setup(buttonR, GPIO.IN)
 GPIO.setup(buttonD, GPIO.IN)
 GPIO.setup(buttonU, GPIO.IN)
 
+#initialize pygame
 pygame.init()
 
 size = input('Game Size: ')
@@ -33,13 +34,16 @@ screen.fill((255,255,255))
 
 while 1:
     clock.tick(15)
+#draw pointer
     Rect = pygame.Rect(x, y, 80, 80)
     pygame.draw.rect(screen, (0,0,0), Rect)
+#draw grid lines
     for i in range(size-1):
         pygame.draw.line(screen, (0,0,0), (xgrid, ygrid+(i*100)+100), (xgrid+(size*100), ygrid+(i*100)+100))
         pygame.draw.line(screen, (0,0,0), (xgrid+100+(i*100), ygrid), (xgrid+100+(i*100), ygrid+(size*100)))
     pygame.display.update()
 
+#updates pointer position
     def update(channel):
          if GPIO.input(buttonR):
              if x < ((size-1)*100): x+=100
@@ -47,15 +51,16 @@ while 1:
              if x > 50: x-=100
          if GPIO.input(buttonU):
              if y > 50: y-=100
-         if GPIO.input(buttonU):
+         if GPIO.input(buttonD):
              if y < ((size-1)*100): y+=100
 
+#set up button events
     GPIO.add_event_detect(buttonL, GPIO.FALLING, callback = update)
     GPIO.add_event_detect(buttonR, GPIO.FALLING, callback = update)
     GPIO.add_event_detect(buttonD, GPIO.FALLING, callback = update)
     GPIO.add_event_detect(buttonU, GPIO.FALLING, callback = update)
 
-
+#set up quit and clear options
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
