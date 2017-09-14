@@ -44,21 +44,14 @@ while 1:
     pygame.display.update()
 
 #updates pointer position
-    def update(channel):
-         if GPIO.input(buttonR):
-             if x < ((size-1)*100): x+=100
-         if GPIO.input(buttonL):
-             if x > 50: x-=100
-         if GPIO.input(buttonU):
-             if y > 50: y-=100
-         if GPIO.input(buttonD):
-             if y < ((size-1)*100): y+=100
-
-#set up button events
-    GPIO.add_event_detect(buttonL, GPIO.FALLING, callback = update)
-    GPIO.add_event_detect(buttonR, GPIO.FALLING, callback = update)
-    GPIO.add_event_detect(buttonD, GPIO.FALLING, callback = update)
-    GPIO.add_event_detect(buttonU, GPIO.FALLING, callback = update)
+     if GPIO.input(buttonR):
+         if x < ((size-1)*100): x+=100
+     if GPIO.input(buttonL):
+         if x > 50: x-=100
+     if GPIO.input(buttonU):
+         if y > 50: y-=100
+     if GPIO.input(buttonD):
+         if y < ((size-1)*100): y+=100
 
 #set up quit and clear options
     for event in pygame.event.get():
