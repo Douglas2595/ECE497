@@ -10,6 +10,5 @@ address = 0x48
 
 while True:
     temp = bus.read_byte_data(address, 0)
-    print(temp, end="\r")
+    print("temp 1 = " + temp, end="\r")
     time.sleep(0.25)
-    
