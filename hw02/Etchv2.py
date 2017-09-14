@@ -32,7 +32,7 @@ ygrid = 0
 clock = pygame.time.Clock()
 screen.fill((255,255,255))
 
-while(1):
+while 1:
 
     clock.tick(15)
 
@@ -48,14 +48,14 @@ while(1):
     pygame.display.update()
 
 #updates pointer position
-     if GPIO.input(buttonR):
-         if x < ((size-1)*100): x+=100
-     if GPIO.input(buttonL):
-         if x > 50: x-=100
-     if GPIO.input(buttonU):
-         if y > 50: y-=100
-     if GPIO.input(buttonD):
-         if y < ((size-1)*100): y+=100
+    if GPIO.input(buttonR):
+        if x < ((size-1)*100): x+=100
+    if GPIO.input(buttonL):
+        if x > 50: x-=100
+    if GPIO.input(buttonU):
+        if y > 50: y-=100
+    if GPIO.input(buttonD):
+        if y < ((size-1)*100): y+=100
 
 #set up quit and clear options
     for event in pygame.event.get():
