@@ -50,11 +50,11 @@ while 1:
 #updates pointer position
     if GPIO.input(buttonR):
         if x < ((size-1)*100): x+=100
-    if GPIO.input(buttonL):
+    if !GPIO.input(buttonL):
         if x > 50: x-=100
     if GPIO.input(buttonU):
         if y > 50: y-=100
-    if GPIO.input(buttonD):
+    if !GPIO.input(buttonD):
         if y < ((size-1)*100): y+=100
 
 #set up quit and clear options
