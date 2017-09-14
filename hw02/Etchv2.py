@@ -32,15 +32,19 @@ ygrid = 0
 clock = pygame.time.Clock()
 screen.fill((255,255,255))
 
-while 1:
+while(1):
+
     clock.tick(15)
+
 #draw pointer
     Rect = pygame.Rect(x, y, 80, 80)
     pygame.draw.rect(screen, (0,0,0), Rect)
+
 #draw grid lines
     for i in range(size-1):
         pygame.draw.line(screen, (0,0,0), (xgrid, ygrid+(i*100)+100), (xgrid+(size*100), ygrid+(i*100)+100))
         pygame.draw.line(screen, (0,0,0), (xgrid+100+(i*100), ygrid), (xgrid+100+(i*100), ygrid+(size*100)))
+
     pygame.display.update()
 
 #updates pointer position
