@@ -6,10 +6,14 @@ import smbus
 import time
 
 bus = smbus.SMBus(1)
-address = 0x48
+address1 = 0x48
+address2 = 0x49
 
 while True:
-    temp = bus.read_byte_data(address, 0)
-    temp1 = temp*1.8 + 32
+    temp1 = bus.read_byte_data(address1, 0)
+    temp2 = bus.read_byte_data(address2)
+    temp1 = temp1*1.8 + 32
+    temp2 = temp2*1.8 + 32
     print(temp1, end="\r")
+    print(temp2, end="\r")
     time.sleep(0.25)
