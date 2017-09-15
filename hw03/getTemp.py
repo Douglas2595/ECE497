@@ -14,6 +14,5 @@ while True:
     temp2 = bus.read_byte_data(address2, 0)
     temp1 = temp1*1.8 + 32
     temp2 = temp2*1.8 + 32
-    print(temp1, end="\r")
-    print(temp2, end="\r")
+    print(temp1, temp2, end="\r")
     time.sleep(0.25)
