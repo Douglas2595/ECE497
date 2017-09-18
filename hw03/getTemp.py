@@ -16,10 +16,12 @@ bus = smbus.SMBus(1)
 address1 = 0x48
 address2 = 0x49
 
-map = {alert1: address1, alert2: address2}
+map1 = {alert1: address1, alert2: address2}
+map2 = {alert1: 'temp1', alert2: 'temp2'}
 
 def alert(channel):
-
+    temp = bus.read_byte_data(map1[channel], 0)
+    print("Alert: " + map2[channel] + " " + temp)
 
 GPIO.add_event_detect(alert1, GPIO.BOTH, callback = alert)
 GPIO.add_event_detect(alert1, GPIO.BOTH, callback = alert)
