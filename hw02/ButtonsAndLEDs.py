@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#Douglas Wise
 
 import Adafruit_BBIO.GPIO as GPIO
 import time

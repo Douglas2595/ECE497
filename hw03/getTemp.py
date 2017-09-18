@@ -1,4 +1,5 @@
 #!/usr/bin/env python 3
+#Douglas Wise
 #read a tmp101
 #sudo apt install python3-smbus
 
