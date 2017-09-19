@@ -37,9 +37,9 @@ y = 0
 while 1:
 
     if GPIO.input(buttonR):
-        if x > 0x01: x >> 1
+        if x > 0x01: x = x >> 1
     if not GPIO.input(buttonL):
-        if x < 0x80: x << 1
+        if x < 0x80: x = x << 1
     if GPIO.input(buttonU):
         if y < 15: y += 2
     if not GPIO.input(buttonD):
