@@ -11,12 +11,14 @@ buttonL = "GP0_3"
 buttonR = "GP0_4"
 buttonD = "GP0_5"
 buttonU = "GP0_6"
+clear = "PAUSE"
 
 #Button/input Setup
 GPIO.setup(buttonL, GPIO.IN)
 GPIO.setup(buttonR, GPIO.IN)
 GPIO.setup(buttonD, GPIO.IN)
 GPIO.setup(buttonU, GPIO.IN)
+GPIO.setup(clear, GPIO.IN)
 
 bus = smbus.SMBus(1)  # Use i2c bus 1
 matrix = 0x70         # Use address 0x70
@@ -44,6 +46,10 @@ while 1:
         if y < 14: y += 2
     if not GPIO.input(buttonD):
         if y > 0: y -= 2
+    if GPIO.input(clear):
+        game = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+        ]
 
     game[y] = game[y] | x
 
