@@ -18,8 +18,10 @@ bus = smbus.SMBus(1)
 address1 = 0x48
 address2 = 0x49
 
-subprocess.run('i2cset', '-y', '0x48', '11', '24', 'w')
-subprocess.run('i2cset', '-y', '0x49', '11', '24', 'w')
+bus.write_byte_data(address1, 3, 24)
+
+# subprocess.run('i2cset', '-y', '0x48', '11', '24', 'w')
+# subprocess.run('i2cset', '-y', '0x49', '11', '24', 'w')
 
 map1 = {alert1: address1, alert2: address2}
 map2 = {alert1: 'temp1', alert2: 'temp2'}
