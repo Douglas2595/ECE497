@@ -31,7 +31,7 @@ def alert(channel):
 GPIO.add_event_detect(alert1, GPIO.BOTH, callback = alert)
 GPIO.add_event_detect(alert2, GPIO.BOTH, callback = alert)
 
-while True:
+while 1:
 
     temp1 = bus.read_byte_data(address1, 0)
     temp2 = bus.read_byte_data(address2, 0)
