@@ -27,17 +27,23 @@ bus.write_byte_data(matrix, 0x21, 0)   # Start oscillator (p10)
 bus.write_byte_data(matrix, 0x81, 0)   # Disp on, blink off (p11)
 bus.write_byte_data(matrix, 0xe7, 0)   # Full brightness (page 15)
 
-game = [0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+game = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 ]
+
+global x = 0x01
+global y = 0
+
 while 1:
     if GPIO.input(buttonR):
-        
+        if x > 0x01: x >> 1
     if not GPIO.input(buttonL):
-
+        if x < 0x80: x << 1
     if GPIO.input(buttonU):
-
+        if y < 15: y += 1
     if not GPIO.input(buttonD):
+        if y > 0: y -= 1
 
-
-bus.write_i2c_block_data(matrix, 0, game)
+    game[y] = game[y] | x
+    
+    bus.write_i2c_block_data(matrix, 0, game)
