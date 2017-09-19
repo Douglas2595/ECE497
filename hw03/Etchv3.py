@@ -47,8 +47,6 @@ while 1:
 
     game[y] = game[y] | x
 
-    print('y = {}, x = {}'.format(y, format(x, '02x')))
-
     bus.write_i2c_block_data(matrix, 0, game)
 
     time.sleep(delay/10)
