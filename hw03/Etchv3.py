@@ -35,14 +35,15 @@ x = 0x01
 y = 0
 
 while 1:
+    clock.tick(15)
     if GPIO.input(buttonR):
         if x > 0x01: x >> 1
     if not GPIO.input(buttonL):
         if x < 0x80: x << 1
     if GPIO.input(buttonU):
-        if y < 15: y += 1
+        if y < 15: y += 2
     if not GPIO.input(buttonD):
-        if y > 0: y -= 1
+        if y > 0: y -= 2
 
     game[y] = game[y] | x
     print('y = {}, x = {}'.format(y, format(x, '02x'))
