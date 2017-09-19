@@ -35,7 +35,7 @@ x = 0x01
 y = 0
 
 while 1:
-    clock.tick(15)
+
     if GPIO.input(buttonR):
         if x > 0x01: x >> 1
     if not GPIO.input(buttonL):
@@ -50,3 +50,5 @@ while 1:
     print('y = {}, x = {}'.format(y, format(x, '02x')))
 
     bus.write_i2c_block_data(matrix, 0, game)
+
+    time.sleep(delay/10)
