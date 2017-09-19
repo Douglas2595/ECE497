@@ -20,9 +20,6 @@ address2 = 0x49
 
 bus.write_byte_data(address1, 3, 24)
 
-# subprocess.run('i2cset', '-y', '0x48', '11', '24', 'w')
-# subprocess.run('i2cset', '-y', '0x49', '11', '24', 'w')
-
 map1 = {alert1: address1, alert2: address2}
 map2 = {alert1: 'temp1', alert2: 'temp2'}
 
@@ -30,6 +27,7 @@ def alert(channel):
     temp = bus.read_byte_data(map1[channel], 0)
     temp = temp*1.8 + 32
     print("Alert: {} is {}".format(map2[channel], temp), end="\r")
+    print(end = "\r")
 
 GPIO.add_event_detect(alert1, GPIO.BOTH, callback = alert)
 GPIO.add_event_detect(alert2, GPIO.BOTH, callback = alert)
