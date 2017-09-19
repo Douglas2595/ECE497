@@ -46,5 +46,7 @@ while 1:
         if y > 0: y -= 2
 
     game[y] = game[y] | x
-    print('y = {}, x = {}'.format(y, format(x, '02x'))
+
+    print('y = {}, x = {}'.format(y, format(x, '02x')))
+
     bus.write_i2c_block_data(matrix, 0, game)
