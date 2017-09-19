@@ -27,7 +27,7 @@ def alert(channel):
     temp = bus.read_byte_data(map1[channel], 0)
     temp = temp*1.8 + 32
     print("Alert: {} is {}".format(map2[channel], temp), end="\r")
-    print(end = "\r")
+
 
 GPIO.add_event_detect(alert1, GPIO.BOTH, callback = alert)
 GPIO.add_event_detect(alert2, GPIO.BOTH, callback = alert)
@@ -40,5 +40,6 @@ while 1:
     temp1 = temp1*1.8 + 32
     temp2 = temp2*1.8 + 32
 
+    print("                             ", end = "\r")
     print(temp1, temp2, end="\r")
     time.sleep(0.25)
