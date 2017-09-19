@@ -22,7 +22,7 @@
 #
 # y = a | b
 # print('y = {}'.format(format(y, '02x')))
-#
+
 # bit shift testing
 # a = 0x01
 # for i in range(1, 5):
@@ -33,3 +33,13 @@
 # import subprocess
 #
 # subprocess.run('ls')
+
+#terminal line clearing
+# import time
+# while 1:
+#     print("blah", end="\r")
+#     time.sleep(0.5)
+#     print("haaablah", end = "\r", flush=True)
+#     time.sleep(0.5)
+#     print("           ", end = "\r")
+#     time.sleep(0.5)
