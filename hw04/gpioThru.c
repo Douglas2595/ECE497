@@ -25,6 +25,7 @@ void signal_handler(int sig)
 {
     printf( "\nCtrl-C pressed, cleaning up and exiting...\n" );
 	keepgoing = 0;
+    printf("keepgoing = 0\n", );
 }
 
 int main(int argc, char *argv[]) {
@@ -76,22 +77,27 @@ int main(int argc, char *argv[]) {
     // printf("GPIO SETDATAOUTADDR mapped to %p\n", gpio_setdataout_addr);
     // printf("GPIO CLEARDATAOUT mapped to %p\n", gpio_cleardataout_addr);
 
-    printf("Start copying GPIO_07 to GPIO_03\n");
+    printf("Start copying\n");
     while(keepgoing) {
     	if(*gpio_button_datain & GPIO3_17) {
             *gpio_led_setdataout_addr= GPIO3_1;
+            printf("Mapping 17 to 1\n");
     	} else {
             *gpio_led_cleardataout_addr = GPIO3_1;
+            printf("Clearing 1\n");
     	}
         if(*gpio_button_datain & GPIO3_20) {
             *gpio_led_setdataout_addr= GPIO3_2;
+            printf("Mapping 20 to 2\n");
     	} else {
             *gpio_led_cleardataout_addr = GPIO3_2;
+            printf("Clearing 2\n");
     	}
         //usleep(1);
     }
 
     // munmap((void *)gpio_addr, GPIO0_SIZE);
+    printf("Exiting\n");
     close(fd);
     return 0;
 }
