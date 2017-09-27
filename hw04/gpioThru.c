@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
 
     printf("Start copying\n");
     while(keepgoing) {
-    	if(*gpio_button_datain & GPIO3_17) {
+    	if(!(*gpio_button_datain & GPIO3_17)) {
             *gpio_led_setdataout_addr= GPIO3_1;
             printf("Mapping 17 to 1\n");
     	} else {
