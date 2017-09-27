@@ -1,0 +1,16 @@
+        Start           End
+
+EMIF0	0x8000_0000		0xBFFF_FFFF 	External Memory (Ex/R/W)(2)
+
+
+GPIO0 	0x44E0_7000		0x44E0_7FFF 	4KB 	GPIO0 Registers
+	 	0x44E0_8000		0x44E0_8FFF 	4KB 	Reserved
+
+GPIO1 	0x4804_C000 	0x4804_CFFF 	4KB 	GPIO1 Registers
+        0x4804_D000 	0x4804_DFFF 	4KB 	Reserved
+
+GPIO2 	0x481A_C000 	0x481A_CFFF 	4KB 	GPIO2 Registers
+		0x481A_D000 	0x481A_DFFF 	4KB 	Reserved
+
+GPIO3 	0x481A_E000 	0x481A_EFFF 	4KB 	GPIO3 Registers
+		0x481A_F000 	0x481A_FFFF 	4KB 	Reserved
