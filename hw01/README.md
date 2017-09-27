@@ -24,7 +24,8 @@ Etch-a-sketch instructions:
 // README missing
 // See README requirements
 // I'm having trouble running your python code.  Please demo in class
-// Grade:  3/10
+//  Thanks for the demo
+// Grade:  10/10
 
 python Etch.py
 ALSA lib pcm_hw.c:1713:(_snd_pcm_hw_open) Invalid value for card
