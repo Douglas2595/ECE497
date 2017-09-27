@@ -78,12 +78,12 @@ int main(int argc, char *argv[]) {
 
     printf("Start copying GPIO_07 to GPIO_03\n");
     while(keepgoing) {
-    	if(!(*gpio_button_datain & GPIO3_17)) {
+    	if(*gpio_button_datain & GPIO3_17) {
             *gpio_led_setdataout_addr= GPIO3_1;
     	} else {
             *gpio_led_cleardataout_addr = GPIO3_1;
     	}
-        if(!(*gpio_button_datain & GPIO3_20)) {
+        if(*gpio_button_datain & GPIO3_20) {
             *gpio_led_setdataout_addr= GPIO3_2;
     	} else {
             *gpio_led_cleardataout_addr = GPIO3_2;
