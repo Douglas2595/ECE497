@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
             *gpio_led_cleardataout_addr = GPIO3_2;
             printf("Clearing 2\n");
     	}
-        //usleep(1);
+        usleep(100000);
     }
 
     // munmap((void *)gpio_addr, GPIO0_SIZE);
