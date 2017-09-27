@@ -25,7 +25,7 @@ void signal_handler(int sig)
 {
     printf( "\nCtrl-C pressed, cleaning up and exiting...\n" );
 	keepgoing = 0;
-    printf("keepgoing = 0\n", );
+    printf("keepgoing = 0\n");
 }
 
 int main(int argc, char *argv[]) {
