@@ -35,6 +35,8 @@ while 1:
     e1_base = encoder.get(1) # read the encoders
     e2_base = encoder.get(2)
 
+    time.sleep(.5)
+
     if encoder.get(1) > e1_base:
         if x > 0x01: x = x >> 1
     if encoder.get(1) < e1_base:
