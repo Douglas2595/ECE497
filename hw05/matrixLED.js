@@ -1,8 +1,8 @@
     var socket;
     var firstconnect = true,
         i2cNum  = "0x70",
-	disp = [];
-    dispRed = [];
+	    disp = [];
+        dispRed = [];
 
 // Create a matrix of LEDs inside the <table> tags.
 var matrixData;
@@ -25,22 +25,22 @@ $("#slider1").slider({min:0, max:15, slide: function(event, ui) {
 // Send one column when LED is clicked.
 function LEDclick(i, j) {
 
-    if(disp[i] >> j & 0x01 === 1){
-        if(dispRed[i] >> j & 0x01 === 1){
-            disp[i] ^= 0x01 << j;
+    if(disp[i] >> j & 0x1 === 1){
+        if(dispRed[i] >> j & 0x1 === 1){
+            disp[i] ^= 0x1 << j;
             socket.emit('i2cset', {i2cNum: i2cNum, i: 2*i,
                              disp: '0x' + disp[i].toString(16)});
                         $('#id' + i + ' ' + j).addClass('red');
         }
         else{
-            dispRed[i] ^= 0x01 << j;
+            dispRed[i] ^= 0x1 << j;
             socket.emit('i2cset', {i2cNum: i2cNum, i: 2*i,
                              disp: '0x' + disp[i].toString(16)});
                         $('#id' + i + ' ' + j).addClass('orange');
         }
     }
     else{
-        if(dispRed[i] >> j & 0x01 << j){
+        if(dispRed[i] >> j & 0x1 << j){
             dispRed[i] ^= 0x1<<j;
             socket.emit('i2cset', {i2cNum: i2cNum, i: (2*i)+1,
 			                 disp: '0x'+dispRed[i].toString(16)});
@@ -49,7 +49,7 @@ function LEDclick(i, j) {
 			              $('#id'+i+'_'+j).removeClass('red');
         }
         else{
-            disp[i] ^= 0x01 << j;
+            disp[i] ^= 0x1 << j;
             socket.emit('i2cset', {i2cNum: i2cNum, i: 2*i,
                              disp: '0x' + disp[i].toString(16)});
                         $('#id'+i+'_'+j).removeClass('green');
