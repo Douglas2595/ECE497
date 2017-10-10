@@ -41,7 +41,6 @@ function LEDclick(i, j) {
     }
     else{
         if(dispRed[i] >> j & 0x01 << j){
-            if(dispRed[i]>>j&0x1 === 1) {
             dispR[i] ^= 0x1<<j;
             socket.emit('i2cset', {i2cNum: i2cNum, i: (2*i)+1,
 			                 disp: '0x'+dispR[i].toString(16)});
