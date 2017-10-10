@@ -5,8 +5,8 @@ body {
   max-width: 650px;
 }
 
-#slider1 { margin: 10px; width: 230px; 
-	text-align:center; 
+#slider1 { margin: 10px; width: 230px;
+	text-align:center;
 	position:relative;
 	right: 0px;
 	top:   0px;
@@ -29,14 +29,24 @@ body {
 	background-color: #eeeeee;
 }
 
-.on {
+.green {
 	border: 1px solid #00ee00;
 	background-color: green;
 
 }
 
+.red {
+    border: 1px solid #00ee00;
+    background-color: red
+}
+
+.orange {
+    border: 1px solid #00ee00;
+    background-color: orange
+}
+
 #i2cNum {
-	text-align: right; 
+	text-align: right;
 	width:	3em;
 }
 
