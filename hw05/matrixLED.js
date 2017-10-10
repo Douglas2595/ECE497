@@ -30,17 +30,17 @@ function LEDclick(i, j) {
             disp[i] ^= 0x1 << j;
             socket.emit('i2cset', {i2cNum: i2cNum, i: 2*i,
                              disp: '0x' + disp[i].toString(16)});
-                        $('#id' + i + ' ' + j).addClass('red');
+                        $('#id' + i + '_' + j).addClass('red');
         }
         else{
             dispRed[i] ^= 0x1 << j;
             socket.emit('i2cset', {i2cNum: i2cNum, i: 2*i,
                              disp: '0x' + disp[i].toString(16)});
-                        $('#id' + i + ' ' + j).addClass('orange');
+                        $('#id' + i + '_' + j).addClass('orange');
         }
     }
     else{
-        if(dispRed[i] >> j & 0x1 << j){
+        if(dispRed[i] >> j & 0x1 === 1){
             dispRed[i] ^= 0x1<<j;
             socket.emit('i2cset', {i2cNum: i2cNum, i: (2*i)+1,
 			                 disp: '0x'+dispRed[i].toString(16)});
