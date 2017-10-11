@@ -34,7 +34,7 @@ function LEDclick(i, j) {
         }
         else{
             dispRed[i] ^= 0x1 << j;
-            socket.emit('i2cset', {i2cNum: i2cNum, i: 2*i,
+            socket.emit('i2cset', {i2cNum: i2cNum, i: (2*i)+1,
                              disp: '0x' + disp[i].toString(16)});
                         $('#id' + i + '_' + j).addClass('orange');
         }
@@ -123,14 +123,14 @@ function LEDclick(i, j) {
             // j cycles through each bit
             for (j = 0; j < 8; j++) {
                 if (((disp[i] >> j) & 0x1) === 1) {
-                    if((dispRed[i] >> j & 0x01 === 1)){
+                    if((dispRed[i] >> j & 0x1 === 1)){
                         $('#id' + i + '_' + j).addClass('orange');
                     }
                     else{
                         $('#id' + i + '_' + j).addClass('green');
                     }
                 } else {
-                    if((dispRed[i] >> j & 0x01 === 1)){
+                    if((dispRed[i] >> j & 0x1 === 1)){
                         $('#id' + i + '_' + j).addClass('red');
                     }
                     else{
