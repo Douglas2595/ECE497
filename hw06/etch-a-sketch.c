@@ -111,8 +111,6 @@ int main()
             int g = 0;      // 6 bits
             int b = 17;      // 5 bits
             unsigned short int t = r<<11 | g << 5 | b;
-            *((unsigned short int*)(fbp + location)) = t;
-
             for(int i = -1; i <= 1; i++){
                 for(int j = -1; i <= 1; j++){
                     location = (xold+vinfo.xoffset + i) * (vinfo.bits_per_pixel/8) +
@@ -120,9 +118,6 @@ int main()
                     *((unsigned short int*)(fbp + location)) = t;
                 }
             }
-            location = (x+vinfo.xoffset) * (vinfo.bits_per_pixel/8) +
-                       (y+vinfo.yoffset) * finfo.line_length;
-
             *((unsigned short int*)(fbp + location)) = 0xff;
             xold = x;
             yold = y;
