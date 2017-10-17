@@ -1,13 +1,13 @@
-/*
-To test that the Linux framebuffer is set up correctly, and that the device permissions
-are correct, use the program below which opens the frame buffer and draws a gradient-
-filled red square:
-
-retrieved from:
-Testing the Linux Framebuffer for Qtopia Core (qt4-x11-4.2.2)
-
-http://cep.xor.aps.anl.gov/software/qt4-x11-4.2.2/qtopiacore-testingframebuffer.html
-*/
+// /*
+// To test that the Linux framebuffer is set up correctly, and that the device permissions
+// are correct, use the program below which opens the frame buffer and draws a gradient-
+// filled red square:
+//
+// retrieved from:
+// Testing the Linux Framebuffer for Qtopia Core (qt4-x11-4.2.2)
+//
+// http://cep.xor.aps.anl.gov/software/qt4-x11-4.2.2/qtopiacore-testingframebuffer.html
+// */
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -53,7 +53,7 @@ int main()
 
     printf("%dx%d, %dbpp\n", vinfo.xres, vinfo.yres, vinfo.bits_per_pixel);
     printf("Offset: %dx%d, line_length: %d\n", vinfo.xoffset, vinfo.yoffset, finfo.line_length);
-    
+
     if (vinfo.bits_per_pixel != 16) {
         printf("Can't handle %d bpp, can only do 16.\n", vinfo.bits_per_pixel);
         exit(5);
@@ -82,7 +82,7 @@ int main()
 	printf("   E3   |");
 	printf("   E4   |");
 	printf(" \n");
-	
+
 	// Black out the screen
 	short color = (0<<11) | (0 << 5) | 8;  // RGB
 	for(int i=0; i<screensize; i+=2) {
@@ -101,7 +101,7 @@ int main()
         x = (rc_get_encoder_pos(1)/2 + vinfo.xres) % vinfo.xres;
         y = (rc_get_encoder_pos(3)/2 + vinfo.yres) % vinfo.yres;
         // printf("xpos: %d, xres: %d\n", rc_get_encoder_pos(1), vinfo.xres);
-        
+
         if((x != xold) || (y != yold)) {
             printf("Updating location to %d, %d\n", x, y);
             // Set old location to green
@@ -112,21 +112,21 @@ int main()
             int b = 0;      // 5 bits
             unsigned short int t = r<<11 | g << 5 | b;
             *((unsigned short int*)(fbp + location)) = t;
-            
+
             // Set new location to white
             location = (x+vinfo.xoffset) * (vinfo.bits_per_pixel/8) +
                        (y+vinfo.yoffset) * finfo.line_length;
-    
+
             *((unsigned short int*)(fbp + location)) = 0xff;
             xold = x;
             yold = y;
         }
-		
+
 		rc_usleep(5000);
 	}
-	
+
 	rc_cleanup();
-    
+
     munmap(fbp, screensize);
     close(fbfd);
     return 0;
