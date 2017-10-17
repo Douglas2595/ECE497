@@ -84,7 +84,7 @@ int main()
 	printf(" \n");
 
 	// Black out the screen
-	short color = (0<<11) | (0 << 5) | 8;  // RGB
+	short color = (0<<11) | (0 << 5) | 0;  // RGB
 	for(int i=0; i<screensize; i+=2) {
 	    fbp[i  ] = color;      // Lower 8 bits
 	    fbp[i+1] = color>>8;   // Upper 8 bits
@@ -108,8 +108,8 @@ int main()
             location = (xold+vinfo.xoffset) * (vinfo.bits_per_pixel/8) +
                        (yold+vinfo.yoffset) * finfo.line_length;
             int r = 0;     // 5 bits
-            int g = 17;      // 6 bits
-            int b = 0;      // 5 bits
+            int g = 0;      // 6 bits
+            int b = 17;      // 5 bits
             unsigned short int t = r<<11 | g << 5 | b;
             *((unsigned short int*)(fbp + location)) = t;
 
