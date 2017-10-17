@@ -115,7 +115,9 @@ int main()
 
             for(int i = -1; i <= 1; i++){
                 for(int j = -1; i <= 1; j++){
-                    *((unsigned short int*)(fbp + location + i + j)) = t;
+                    location = (xold+vinfo.xoffset + i) * (vinfo.bits_per_pixel/8) +
+                               (yold+vinfo.yoffset + j) * finfo.line_length;
+                    *((unsigned short int*)(fbp + location)) = t;
                 }
             }
             location = (x+vinfo.xoffset) * (vinfo.bits_per_pixel/8) +
