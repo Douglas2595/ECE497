@@ -99,7 +99,7 @@ int main()
         // Update framebuffer
         // Figure out where in memory to put the pixel
         x = (rc_get_encoder_pos(1)/2 + vinfo.xres) % vinfo.xres;
-        y = (rc_get_encoder_pos(3)/2 + vinfo.yres) % vinfo.yres;
+        y = (rc_get_encoder_pos(2)/2 + vinfo.yres) % vinfo.yres;
         // printf("xpos: %d, xres: %d\n", rc_get_encoder_pos(1), vinfo.xres);
 
         if((x != xold) || (y != yold)) {
