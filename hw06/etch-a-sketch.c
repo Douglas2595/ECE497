@@ -118,7 +118,7 @@ int main()
                     *((unsigned short int*)(fbp + location)) = t;
                 }
             }
-            *((unsigned short int*)(fbp + location)) = 0xff;
+            *((unsigned short int*)(fbp + location)) = t;
             xold = x;
             yold = y;
         }
