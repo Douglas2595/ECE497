@@ -30,6 +30,7 @@ int main()
     int x = 0, y = 1;       // Make it so the it runs before the encoder is moved
     int xold = 0, yold = 0;
     long int location = 0;
+    int width = 1;
 
     // Open the file for reading and writing
     fbfd = open("/dev/fb0", O_RDWR);
@@ -75,6 +76,9 @@ int main()
 		fprintf(stderr,"ERROR: failed to run rc_initialize(), are you root?\n");
 		return -1;
 	}
+    printf("\nEnter line width: ");
+    scanf("%d", &width);
+    printf("\nwidth set to %d\n", width)
 
 	printf("\nRaw encoder positions\n");
 	printf("   E1   |");
@@ -112,8 +116,8 @@ int main()
             int b = 17;      // 5 bits
             unsigned short int t = r<<11 | g << 5 | b;
 
-            for(int i = -1; i <= 1; i++){
-                for(int j = -1; j <= 1; j++){
+            for(int i = -width; i <= width; i++){
+                for(int j = -width; j <= width; j++){
                     location = (xold+vinfo.xoffset + i) * (vinfo.bits_per_pixel/8) +
                                (yold+vinfo.yoffset + j) * finfo.line_length;
                     *((unsigned short int*)(fbp + location)) = t;
