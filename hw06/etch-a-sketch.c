@@ -113,7 +113,11 @@ int main()
             unsigned short int t = r<<11 | g << 5 | b;
             *((unsigned short int*)(fbp + location)) = t;
 
-            // Set new location to white
+            for(int i = -1; i <= 1; i++){
+                for(int j = -1; i <= 1; j++){
+                    *((unsigned short int*)(fbp + location + i + j)) = t;
+                }
+            }
             location = (x+vinfo.xoffset) * (vinfo.bits_per_pixel/8) +
                        (y+vinfo.yoffset) * finfo.line_length;
 
