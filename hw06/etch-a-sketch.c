@@ -78,7 +78,7 @@ int main()
 	}
     printf("\nEnter line width: ");
     scanf("%d", &width);
-    printf("\nwidth set to %d\n", width)
+    printf("\nwidth set to %d\n", width);
 
 	printf("\nRaw encoder positions\n");
 	printf("   E1   |");
