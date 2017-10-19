@@ -1,7 +1,13 @@
-#!/usr/bin/env python 3
+#!/usr/bin/env python3
 #Douglas Wise
 #Sep 18, 2017
 #testing file
+
+test = input('input: jpeg ')
+if test == 'jpeg':
+    print('pass')
+else:
+    print('fail')
 
 
 #map testing
@@ -23,7 +29,7 @@
 # y = a | b
 # print('y = {}'.format(format(y, '02x')))
 
-# bit shift testing
+#bit shift testing
 # a = 0x01
 # for i in range(1, 5):
 #     print('a = {}'.format(format(a, '02x')))
@@ -43,3 +49,22 @@
 #     time.sleep(0.5)
 #     print("           ", end = "\r")
 #     time.sleep(0.5)
+
+#using curses to end program
+# import curses, sys, time
+#
+# stdscr = curses.initscr()
+# stdscr.nodelay(1)
+#
+# def esc():
+#     curses.endwin()
+#     sys.exit()
+#
+# i = 0
+# while 1:
+#     time.sleep(0.5)
+#     key = stdscr.getch()
+#     print("Running... count: {}".format(i), end = "\r")
+#     i += 1
+#     if key == 27:
+#         esc()
