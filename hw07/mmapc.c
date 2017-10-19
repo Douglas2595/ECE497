@@ -54,11 +54,11 @@ int main(int argc, char *argv[]) {
 
     printf("Start copying\n");
     while(keepgoing) {
-    	if(*gpio_datain & GPIO3_1) {
-            *gpio_setdataout_addr= GPIO3_2;
+    	if(*gpio_datain & GPIO3_2) {
+            *gpio_setdataout_addr= GPIO3_1;
             printf("Mapping 17 to 1\n");
     	} else {
-            *gpio_cleardataout_addr = GPIO3_2;
+            *gpio_cleardataout_addr = GPIO3_1;
             printf("Clearing 1\n");
     	}
         usleep(100000);
