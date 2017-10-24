@@ -1,0 +1,27 @@
+Douglas Wise and Austin Yates
+Socket File Transfer with TCP
+
+Client Usage: python client.py
+	Uses Port 12000 to connect to a server on the localhost.
+	Valid commands are listed below to send and receive files to and from
+	the server.
+
+Valid Commands:
+	iWant <filename>
+		Requests a file of the given file name <filename> from the server.
+		Prompts for an absolute directory to store the received file.
+		Pressing enter without any input uses the default directory of "./received/"
+
+	uTake <filename>
+		Requests for the server to recieve a file <filename> sent by the client.
+		The server needs to select a save directory (must be absolute) or enter
+		to save to the default "./store/" directory.
+
+	q
+		Closes the client.
+
+Server Usage: python server.py
+	Only connects on port 12000.
+	Does not take any commands but does require some interaction when receiving
+	a file from the client in order to select the save directory. 
+	Closed using ctrl-c.
