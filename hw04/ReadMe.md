@@ -11,4 +11,5 @@ encoders: run setup.py. then Ethcv4.py to run Etch-a-sketch using encoders
 # Comments from Prof. Yoder
 # Found your memory map file
 # Your ReadMe file is missing.  Please fill this in so I can grade it.
-# Grade:  0/10
+# 25-Oct-2017:  ReadMe done, but took two tries
+# Grade:  9/10
