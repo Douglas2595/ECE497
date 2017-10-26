@@ -19,7 +19,7 @@ map = {GP_in: GP_out}
 # output function
 def output(channel):
     print("channel =" + channel)
-    state = not GPIO.input(channel)         # get input value
+    state = GPIO.input(channel)         # get input value
     GPIO.output(map[channel], state)    # outputs input value
 
 print("Running...")
