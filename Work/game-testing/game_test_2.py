@@ -47,7 +47,10 @@ def client():
             print 'bad command'
 
         client_command = raw_input('Player 2: ')
-        if client_command == 'send':
+        if client_command == 'q':
+            break
+
+        elif client_command == 'send':
             clientSocket.send(command)
             if clientSocket.recv(1024) == 'send file':
                 sendFile(clientSocket)
