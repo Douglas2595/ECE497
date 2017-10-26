@@ -51,7 +51,7 @@ def client():
             clientSocket.send(command)
             if clientSocket.recv(1024) == 'send file':
                 sendFile(clientSocket)
-                clientSocket(SHUT_WR)
+                clientSocket.shutdown(SHUT_WR)
             else:
                 print 'no ack'
         else:
