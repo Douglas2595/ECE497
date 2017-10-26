@@ -51,7 +51,7 @@ def client():
             break
 
         elif client_command == 'send':
-            clientSocket.send(command)
+            clientSocket.send(client_command)
             if clientSocket.recv(1024) == 'send file':
                 sendFile(clientSocket)
                 clientSocket.shutdown(SHUT_WR)
