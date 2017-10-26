@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
             *gpio_cleardataout_addr = GPIO3_1;
             printf("Clearing 1\n");
     	}
-        usleep(100000);
+        // usleep(100000);
     }
 
 

@@ -26,19 +26,36 @@ def client():
     clientSocket.connect((serverName,serverPort))
     print 'Client started.\nValid command is send\nEnter \'q\' to quit.'
 
-    # while 1:
-    #     recieved = recieve(clientSocket)
-    #     if recieved == 0:
-    #         break
-    #     else:
-    #         sent = send('Player 2', clientSocket)
-    #         if sent == 0:
-    #             break
+    while 1:
+        command = clientSocket.recv(1024)
+        if command == 'q':
+            break
+        elif command == 'send':
+            clientSocket.send('send file')
+            fileMessage = clientSocket.recv(1024)
+            test = fileMessage.split(":", 1)
+            if test[0] == "Failure":
+                print fileMessage
+            else:
+                f = open(path, 'wb')
+                while fileMessage:
+                    f.write(fileMessage)
+                    fileMessage = clientSocket.recv(1024)
+                print 'Receive complete.'
+                f.close()
+        else:
+            print 'bad command'
 
-
-    recieve(clientSocket)
-
-    send('Player 2', clientSocket)
+        client_command = raw_input('Player 2: ')
+        if client_command == 'send':
+            clientSocket.send(command)
+            if clientSocket.recv(1024) == 'send file':
+                sendFile(clientSocket)
+                clientSocket(SHUT_WR)
+            else:
+                print 'no ack'
+        else:
+            print 'bad command'
 
     clientSocket.close()
 
@@ -49,18 +66,40 @@ def server():
     serverSocket.listen(1)
     print "The server has started.\nUse ctrl-c to quit."
     connectionSocket, addr = serverSocket.accept()
-    # while 1:
-    #     sent = send('Player 1', connectionSocket)
-    #     if sent == 0:
-    #         break
-    #     else:
-    #         recieved = recieve(connectionSocket)
-    #         if recieved == 0:
-    #             break
 
-    send('Player 1', connectionSocket)
+    while 1:
+        command = raw_input('Player 1: ')
 
-    recieve(connectionSocket)
+        if command == 'q':
+            break
+
+        elif command == 'send':
+            connectionSocket.send(command)
+            if connectionSocket.recv(1024) == 'send file':
+                sendFile(connectionSocket)
+                connectionSocket.shutdown(SHUT_WR)
+            else:
+                print 'no ack'
+        else:
+            print 'bad command'
+
+        server_command = connectionSocket.recv(1024)
+        if server_command == 'send':
+            connectionSocket.send('send file')
+            fileMessage = connectionSocket.recv(1024)
+            test = fileMessage.split(":", 1)
+            if test[0] == "Failure":
+                print fileMessage
+            else:
+                f = open(path, 'wb')
+                while fileMessage:
+                    f.write(fileMessage)
+                    fileMessage = connectionSocket.recv(1024)
+                print 'Receive complete.'
+                f.close()
+        else:
+            print 'bad command'
+
 
     connectionSocket.close()
 
