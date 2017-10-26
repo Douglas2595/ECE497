@@ -1,0 +1,1 @@
+cmd_/home/wisedt/ECE497/hw07/kernel/gpio_test.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/wisedt/ECE497/hw07/kernel/gpio_test.ko /home/wisedt/ECE497/hw07/kernel/gpio_test.o /home/wisedt/ECE497/hw07/kernel/gpio_test.mod.o
