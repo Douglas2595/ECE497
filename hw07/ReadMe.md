@@ -17,6 +17,5 @@ for python, just run
 the final report with results is in Hw07_Report.dox
 
 // Comments from Prof. Yoder
-// ReadMe missing
-// Project page missing
-// Grade:  0/10
+// Results look good.
+// Grade:  10/10
